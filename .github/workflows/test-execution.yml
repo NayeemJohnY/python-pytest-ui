@@ -2,7 +2,7 @@ name: Test Execution
 on: 
     workflow_dispatch:
 
-jons:
+jobs:
     build:
         name: test-execution
         runs-on: [ubuntu-latest]
