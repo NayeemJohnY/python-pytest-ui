@@ -11,7 +11,14 @@ jobs:
               uses: actions/checkout@v4
             
             - name: Install Dependencies
-              run: pip install selenium pytest
+              run: pip install -r requirements.txt --upgrade
             
             - name: Run Test
-              run: pytest
+              run: pytest --html=report.html
+            
+            - name: Upload HTML Report
+              if: success() || failure()
+              uses: actions/upload-artifact@v3
+              with:
+                 name: test-results
+                 path: report.html
